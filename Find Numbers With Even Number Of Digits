@@ -1,0 +1,28 @@
+class Solution {
+    public int findNumbers(int[] nums) {
+        int count=0;
+        for(int i:nums)
+        {
+           if(even(i))
+           {
+            count++;
+           }
+        }
+        return count;
+    }
+    public int digits(int num)
+    {
+        return (int)(Math.log10(num))+1;
+    }
+    public boolean even(int num)
+    {
+        int ndig=digits(num);
+        return (ndig%2==0);
+    }
+    public void main(String []args)
+    {
+        int []nums = {12,345,2,6,7896};
+        int res=findNumbers(nums);
+        System.out.println(res);
+    }
+}

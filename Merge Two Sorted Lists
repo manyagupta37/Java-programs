@@ -1,0 +1,59 @@
+class Solution {
+    ListNode head;
+        ListNode tail;
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        
+        ListNode f = list1;
+        ListNode s = list2;
+       // ListNode ans=new ListNode();
+        
+        while(f!=null && s!=null)
+        {
+            if(f.val<s.val)
+            {
+                InsertLast(f.val);
+                f=f.next;
+            }
+            else
+            {
+                InsertLast(s.val);
+                s=s.next;
+            }
+        }
+        while(f!=null)
+        {
+            InsertLast(f.val);
+                f=f.next;
+        }
+        while(s!=null)
+        {
+            InsertLast(s.val);
+                s=s.next;
+        }
+        return head;
+
+    }
+     public void InsertFirst(int val)
+    {
+        ListNode nn = new ListNode(val);
+        nn.next=head;
+        head=nn;
+        if(tail==null)
+        {
+            tail=head;
+        }
+
+    }
+    public void InsertLast(int val)
+    {
+        ListNode nn = new ListNode(val);
+        if(tail==null)
+        {
+            InsertFirst(val);
+        }else{
+        tail.next=nn;
+        nn.next=null;
+        tail=nn;}
+    }
+    
+}

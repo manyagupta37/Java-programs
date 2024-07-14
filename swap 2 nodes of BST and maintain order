@@ -1,0 +1,45 @@
+package DSA3.BinaryTrees;
+
+public class TwoNodeSwap {
+    node first;
+    node second;
+    node prev;
+    public void helper(node root)
+    {
+        if(root==null)
+        {
+            return;
+        }
+        Inorder(root);
+        //swap
+        int temp=first.val;
+        first.val=second.val;
+        second.val=temp;
+        
+    }
+    
+    public void Inorder(node n)
+    {
+        Inorder(n.left);
+        if(prev!=null && prev.val>n.val)
+        {
+            if(first==null)
+            {
+                first=prev;
+            }
+            second = n;
+        }
+        prev=n;
+        Inorder(n.right);
+    }
+}
+
+class node{
+    int val;
+    node left;
+    node right;
+    node(int val)
+    {
+        this.val=val;
+    }
+}

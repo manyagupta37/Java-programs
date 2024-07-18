@@ -15,12 +15,15 @@ class Solution {
         // Your code here
         if(head==null)
         {
-            return 0;
+            return -1;
         }
         Node slow=head;
         Node fast=head;
         for(int i=1;i<=k;i++)
         {
+            if(fast==null){
+             return -1;
+             }
             fast=fast.next;
         }
         while(fast!=null){

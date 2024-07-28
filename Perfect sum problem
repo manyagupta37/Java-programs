@@ -1,0 +1,28 @@
+class Solution {
+
+    public int perfectSum(int arr[], int n, int sum) {
+        int[][] t = new int[n + 1][sum + 1];
+        
+
+        // Initializing the base cases
+        for (int i = 0; i <= n; i++) {
+            t[i][0] = 1; // There's one way to get a sum of 0: by choosing no elements
+        }
+
+        for (int j = 1; j <= sum; j++) {
+            t[0][j] = 0; // There's no way to get a non-zero sum with 0 elements
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= sum; j++) {
+                if (arr[i - 1] <= j) {
+                    t[i][j] = t[i - 1][j] + t[i - 1][j - arr[i - 1]];
+                } else {
+                    t[i][j] = t[i - 1][j];
+                }
+            }
+        }
+
+        return t[n][sum];
+    }
+}

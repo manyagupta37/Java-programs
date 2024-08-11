@@ -1,0 +1,80 @@
+package DSA3;
+
+public class StartsWith {
+    static class node{
+        node [] children;
+        boolean eow;
+        public node()
+        {
+            children=new node[26];
+            eow=false;
+        }
+    }
+    static node root=new node();
+    public static void insert(String word)
+    {
+        node curr=root;
+        word=word.toLowerCase();
+        for(int i=0;i<word.length();i++)
+        {
+            int index=word.charAt(i)-'a';
+            if(curr.children[index]==null)
+            {
+                curr.children[index]=new node();
+
+            }
+            if(i==word.length()-1)
+            {
+                curr.children[index].eow=true;
+            }
+            curr=curr.children[index];
+        }
+
+    }
+    public static boolean search(String word)
+    {
+        node curr=root;
+        word=word.toLowerCase();
+        for(int i=0;i<word.length();i++)
+        {
+            int index=word.charAt(i)-'a';
+            if(curr.children[index]==null)
+            {
+                return false;
+
+            }
+            if(i==word.length()-1 && curr.children[index].eow==false)
+            {
+                return false;
+            }
+            curr=curr.children[index];
+        }
+        return true;
+    }
+    public static boolean startsWith(String prefix)
+    {
+        node curr=root;
+        for(int i=0;i<prefix.length();i++)
+        {
+            int index=prefix.charAt(i)-'a';
+            if(curr.children[index]==null)
+            {
+                return false;
+            }
+            curr=curr.children[index];
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        String[]words={"apple","app","mango","man","woman"};
+        for(String i:words){
+            insert(i);
+        }
+        System.out.println(startsWith("app"));
+        System.out.println(startsWith("oma"));
+        System.out.println(startsWith("man"));
+
+
+
+    }
+}

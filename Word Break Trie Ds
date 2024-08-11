@@ -1,0 +1,83 @@
+package DSA3;
+
+public class WordBreak {
+    static class node{
+        node [] children;
+        boolean eow;
+        node()
+        {
+            children=new node[26];
+
+            eow=false;
+        }
+    }
+    static node root=new node();
+    public static void insert(String word)
+    {
+        node curr=root;
+        word=word.toLowerCase();
+        for(int i=0;i<word.length();i++)
+        {
+            int index=word.charAt(i)-'a';
+            if(curr.children[index]==null)
+            {
+                curr.children[index]=new node();
+            }
+            if(i==word.length()-1)
+            {
+                curr.children[index].eow=true;
+            }
+            curr=curr.children[index];
+        }
+
+    }
+    public static boolean search(String key)
+    {
+        node curr=root;
+        key=key.toLowerCase();
+        for(int i=0;i<key.length();i++)
+        {
+            int index=key.charAt(i)-'a';
+            if(curr.children[index]==null)
+            {
+                return false;
+            }
+            if(i==key.length()-1 && !curr.children[index].eow)
+            {
+                return false;
+            }
+            curr=curr.children[index];
+        }
+        return true;
+    }
+
+    public static boolean wordBreak(String s)
+    {
+        int len=s.length();
+        if(len==0)
+        {
+            return true;
+        }
+        for(int i=1;i<=len;i++)
+        {
+            String first=s.substring(0,i);
+            String second=s.substring(i);
+
+            if(search(first) && wordBreak(second))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+       String s = "leetcode";
+       String []wordDict = {"leet","code"};
+       for(String i:wordDict)
+       {
+           insert(i);
+       }
+        System.out.println(wordBreak(s));
+    }
+
+}

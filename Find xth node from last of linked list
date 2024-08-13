@@ -1,0 +1,44 @@
+/** This is the ListNode class definition
+
+class ListNode {
+	int data;
+	ListNode next;
+
+	ListNode(int data) {
+		this.data = data;
+		this.next = null;
+	}
+}
+**/
+class Solution {
+	ListNode xthNodeFromEnd(ListNode head, int x) {
+		// add your logic here
+		if(head==null)
+		{
+			return null;
+		}
+		
+		int size=0;
+		ListNode temp=head;
+		while(temp!=null)
+		{
+			temp=temp.next;
+			size++;
+		}
+		
+		if(size==x)
+		{
+			return head;
+		}
+		
+		int index=size - x + 1;
+		int i=1;
+		ListNode prev=head;
+		while(i<index)
+		{
+			prev=prev.next;
+			i++;
+		}
+		return prev;
+	}
+}

@@ -1,0 +1,26 @@
+class Solution {
+    public List<Integer> targetIndices(int[] nums, int target) {
+        int num=0;
+        int targetCount=0;
+        for(int elem:nums)
+        {
+            if(elem==target)
+            {
+                targetCount++;
+            }
+            else if(elem<target)
+            {
+                num++;
+            }
+        }
+
+        List<Integer>res=new ArrayList<>();
+        while(targetCount>0)
+        {
+            res.add(num);
+            num++;
+            targetCount--;
+        }
+        return res;
+    }
+}

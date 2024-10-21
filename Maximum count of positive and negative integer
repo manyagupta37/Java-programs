@@ -1,0 +1,59 @@
+class Solution {
+    public int maximumCount(int[] nums) {
+        int  lastnegindex= lasNeg(nums)+1;
+        int  firtposindex= nums.length-firstPos(nums);
+
+        return Math.max(lastnegindex,firtposindex);
+    }
+    public int lasNeg(int []nums)
+    {
+        int s=0;
+        int e=nums.length-1;
+        int ans=-1;
+
+        while(s<=e)
+        {
+            int m=(s+e)/2;
+
+            
+                if(nums[m]<0)
+                {
+                    ans=m;
+                    s=m+1;
+                }
+                else
+                {
+                    e=m-1;
+
+                }
+            
+        }
+        return ans;
+    }
+    public int firstPos(int[]nums)
+    {
+         int s=0;
+        int e=nums.length-1;
+        int ans=nums.length;
+
+        while(s<=e)
+        {
+            int m=(s+e)/2;
+
+            
+            
+                if(nums[m]>0)
+                {
+                    ans=m;
+                    e=m-1;
+                }
+                else
+                {
+                    s=m+1;
+
+                }
+            
+        }
+        return ans;
+    }
+}

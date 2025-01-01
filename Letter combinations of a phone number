@@ -1,0 +1,27 @@
+class Solution {
+    public static String[]keypad={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    public List<String> letterCombinations(String digits) {
+        List<String>res=new ArrayList<>();
+         
+        print(digits,0,"",res);
+        return res;
+    }
+    public void print(String s,int idx,String combination,List<String>res)
+    {
+        if(idx==s.length())
+        {
+            if(!combination.isEmpty())
+            {
+                res.add(combination);
+            }
+            return;
+        }
+
+        char curr=s.charAt(idx);
+        String mapping=keypad[curr-'0'];
+        for(int i=0;i<mapping.length();i++)
+        {
+            print(s,idx+1,combination+mapping.charAt(i),res);
+        }
+    }
+}

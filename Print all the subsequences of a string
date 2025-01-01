@@ -1,0 +1,32 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+class Solution {
+    public static ArrayList<String> subsequences(String str) {
+        // Write your code here
+        
+        ArrayList<String>res=new ArrayList<>();
+        ans(str,0,"",res);
+        return res;
+        
+        
+    }
+    public static void ans(String s,int idx,String newString,ArrayList<String>res)
+    {
+        if(idx==s.length())
+        {
+            if(!newString.isEmpty())
+            {
+
+            res.add(newString);
+            }
+            return;
+        }
+
+        char curr=s.charAt(idx);
+
+        ans(s,idx+1,newString+curr,res);
+        ans(s,idx+1,newString,res);
+    }
+}

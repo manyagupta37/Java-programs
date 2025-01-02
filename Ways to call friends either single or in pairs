@@ -1,0 +1,16 @@
+class Main {
+    public static void main(String[] args) {
+        int n=3;
+        System.out.print(call(n));
+    }
+    public static int call(int n)
+    {
+        if(n<=1)
+        {
+            return 1;
+        }
+        int single=call(n-1);
+        int pair=(n-1)*call(n-2);
+        return single+pair;
+    }
+}

@@ -1,0 +1,42 @@
+class Solution {
+    public int[] findMissingAndRepeatedValues(int[][] grid) {
+        ArrayList<Integer>list=new ArrayList<>();
+        int[]ans=new int[2];int a=0;int b=0;
+        int n=grid.length;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                list.add(grid[i][j]);
+            }
+        }
+        for(int i=0;i<list.size();i++)
+        {
+            for(int j=i+1;j<list.size();j++)
+            {
+                if(list.get(i).equals(list.get(j)))
+                {
+                    a=list.get(i);
+                }
+            }
+            boolean[]found=new boolean[n*n+1];
+            for(int num:list)
+            {
+                if(num<=n*n)
+                {
+                    found[num]=true;
+                }
+            }
+            for(int k=1;k<=n*n;k++)
+            {
+                if(!found[k])
+                {
+                    b=k;
+                }
+            }
+        }
+        ans[0]=a;
+        ans[1]=b;
+        return ans;
+    }
+}

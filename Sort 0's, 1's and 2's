@@ -1,0 +1,28 @@
+public void sort012(int[] arr) {
+        // code here
+        int l=0;
+        int h=arr.length-1;
+        int k=0;
+        while(k<=h)
+        {
+            if(arr[k]==1)
+            {
+                k++;
+            }
+            else if(arr[k]==0)
+            {
+                int temp=arr[l];
+                arr[l]=arr[k];
+                arr[k]=temp;
+                l++;
+                k++;
+                
+            }
+            else
+            {
+                int temp=arr[h];
+                arr[h]=arr[k];
+                arr[k]=temp;
+                h--;
+            }
+        }

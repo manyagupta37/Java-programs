@@ -1,0 +1,35 @@
+{
+    // print the elements which appear more than
+    // once in the array in sorted order
+    public static void SortedDuplicates(int arr[], int n)
+    {
+        //Your code here
+        ArrayList<Integer>list=new ArrayList<>();
+        if(n<=1)
+        {
+            list.add(-1);
+        }
+        Arrays.sort(arr);
+        for(int i=0;i<n-1;i++)
+        {
+            if(arr[i]==arr[i+1])
+            {
+                if(!list.contains(arr[i]))
+                {
+                list.add(arr[i]);
+                }
+            }
+        }
+        if(list.isEmpty())
+        {
+            list.add(-1);
+        }
+        
+        
+        for(int j=0;j<list.size();j++)
+        {
+            System.out.print(list.get(j)+" ");
+        }
+     }
+    
+}

@@ -1,0 +1,14 @@
+class Solution {
+    // Function to return sum of all nodes of a binary tree
+    static int sumBT(Node root) {
+        // Your code here
+        if(root==null)
+        {
+            return 0;
+            
+        }
+        int lsum=sumBT(root.left);
+        int rsum=sumBT(root.right);
+        return lsum+rsum+root.data;
+    }
+}

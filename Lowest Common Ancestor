@@ -1,0 +1,42 @@
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(p==root || q==root)
+        {
+            return root;
+        }
+        if(p==q)
+        {
+            return p;
+        }
+
+        boolean left=contains(root.left,p);
+        boolean right=contains(root.right,q);
+        if((left && right) || (!left && !right))
+        {
+            return root;
+
+        }
+        if(left && !right)
+        {
+            return lowestCommonAncestor(root.left,p,q);
+        }
+        if(!left && right)
+        {
+            return lowestCommonAncestor(root.right,p,q);
+        }
+        return null;
+    }
+    public boolean contains(TreeNode root,TreeNode node)
+    {
+        if(root==node)
+        {
+            return true;
+        }
+        if(root==null)
+        {
+            return false;
+        }
+
+        return contains(root.left,node) || contains(root.right,node);
+    }
+}

@@ -1,0 +1,10 @@
+static int productBT(Node root)
+{
+	if(root==null)
+    {
+      return 1;
+    }
+  int l=productBT(root.left);
+  int r=productBT(root.right);
+  return l*r*root.key;
+}

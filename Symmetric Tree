@@ -1,0 +1,45 @@
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root==null)
+        {
+            return true;
+        }
+
+       root.left=invert(root.left);
+       return sameTree(root.left,root.right);
+    }
+    public boolean sameTree(TreeNode root,TreeNode node)
+    {
+        if(root==null && node==null)
+        {
+            return true;
+        }
+        if(root==null || node==null)
+        {
+            return false;
+            
+        }
+        
+
+        if(root.val!=node.val)
+        {
+            return false;
+        }
+        return sameTree(root.left,node.left) && sameTree(root.right,node.right);
+    }
+
+    public TreeNode invert(TreeNode root)
+    {
+        if(root==null)
+        {
+            return root;
+        }
+
+        TreeNode l=root.left;
+        TreeNode r=root.right;
+        root.left=invert(r);
+        root.right=invert(l);
+
+        return root;
+    }
+}

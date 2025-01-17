@@ -1,0 +1,26 @@
+class Solution{
+    public static int findMax(Node root){
+        //code here
+        int max=Integer.MIN_VALUE;
+        if(root==null)
+        {
+            return Integer.MIN_VALUE;
+        }
+        int lmax=findMax(root.left);
+        int rmax=findMax(root.right);
+        return Math.max(root.data,Math.max(lmax,rmax));
+    }
+    public static int findMin(Node root){
+        //code here
+        int min=Integer.MAX_VALUE;
+        if(root==null)
+        {
+            return Integer.MAX_VALUE;
+        }
+        int lmin=findMin(root.left);
+        int rmin=findMin(root.right);
+        
+        return Math.min(root.data,Math.min(lmin,rmin));
+    }
+    
+}

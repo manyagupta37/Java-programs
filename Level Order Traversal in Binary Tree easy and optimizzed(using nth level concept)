@@ -1,0 +1,56 @@
+class Solution {
+    // Function to return the level order traversal line by line of a tree.
+    static ArrayList<ArrayList<Integer>> levelOrder(Node node) {
+        // Your code here
+         ArrayList<ArrayList<Integer>>res=new ArrayList<>();
+         
+         
+        if(node==null)
+        {
+            return res;
+        }
+        
+        int levels=totallevels(node);
+        for(int i=0;i<levels;i++)
+        {
+            ArrayList<Integer>list=new ArrayList<>();
+            nthLevel(node,i,list);
+            res.add(list);
+        }
+        return res;
+    
+    }
+    
+    static void nthLevel(Node node,int n,ArrayList<Integer>list)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        if(n==0)
+        {
+            list.add(node.data);
+            return;
+        }
+        
+       nthLevel(node.left,n-1,list);
+       nthLevel(node.right,n-1,list);
+    }
+    static int totallevels(Node node)
+    {
+        return height(node)+1;
+    }
+    static int height(Node node)
+    {
+        if(node==null)
+        {
+            return -1;
+        }
+        int l=height(node.left);
+        int r=height(node.right);
+        return Math.max(l,r)+1;
+    }
+    
+   
+
+}

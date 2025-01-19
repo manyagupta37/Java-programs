@@ -1,0 +1,29 @@
+class Solution {
+    // root : the root Node of the given BST
+    // target : the target sum
+    public int findTarget(Node root, int target) {
+        // Write your code here
+        HashSet<Integer>set=new HashSet<>();
+        return helper(root,target,set);
+        
+    }
+    
+    public int helper(Node root,int target,HashSet<Integer>set)
+    {
+        if(root==null)
+        {
+            return 0;
+        }
+        
+        if(set.contains(target-root.data))
+        {
+            return 1;
+        }
+        set.add(root.data);
+        
+        if(helper(root.left,target,set)==1){
+            return 1;
+        }
+        return helper(root.right,target,set);
+    }
+}

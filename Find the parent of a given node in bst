@@ -1,0 +1,19 @@
+static int findParent(Node root, int target, int parent) {
+    if (root == null) {
+        // Target not found, return -1 as an indicator
+        return -1;
+    }
+
+    if (root.data == target) {
+        // Found the target, return the parent
+        return parent;
+    }
+
+    if (target < root.data) {
+        // Recur for the left subtree
+        return findParent(root.left, target, root.data);
+    }
+
+    // Recur for the right subtree
+    return findParent(root.right, target, root.data);
+}

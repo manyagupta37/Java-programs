@@ -1,0 +1,22 @@
+if(root==null)
+{
+return null;
+}
+Node inorderParent=null;
+while(root!=null)
+{
+if(val<root.data)
+{
+inorderParent=root;
+root=root.left;
+}
+if(val>root.data)
+{
+root=root.right;
+}
+else
+{
+break;
+}
+
+return (inorderParent!=null) ? inorderParent : -1;

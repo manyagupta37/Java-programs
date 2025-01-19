@@ -1,0 +1,30 @@
+static boolean checkForTriplet(Node root, int sum) {
+      ArrayList<Integer>list=new ArrayList<>();
+      inorder(root,list);
+      return helper(list,sum);
+    }
+  
+  static boolean helper(ArrayList<Integer>list,int sum)
+  {
+    int n=list.size();
+    for(int i=0;i<n-1;i++)
+    {
+      int s=i+1;
+      int e=n-1;
+      while(s<e){
+        int currSum=list.get(i)+list.get(s)+list.get(e);
+        if(currSum==sum){
+          return true;
+        }
+        else if(currSum<sum)
+        {
+          s++;
+        }
+        else
+        {
+          e--;
+        }
+      }
+    }
+      return false;
+   }

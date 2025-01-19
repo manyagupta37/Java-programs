@@ -1,0 +1,20 @@
+public class Solution {
+    public static boolean findNode(TreeNode <Integer> root, int key) {
+        // Write your code here.
+        if(root==null)
+        {
+            return false;
+        }
+        if(root.data==key)
+        {
+            return true;
+        }
+        if(key<root.data)
+        {
+            return findNode(root.left,key);
+        }
+        
+            return findNode(root.right,key);
+        
+    }
+}

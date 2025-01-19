@@ -1,0 +1,24 @@
+class Solution {
+    // Function to check if two trees are identical.
+    boolean isIdentical(Node r1, Node r2) {
+        // Code Here
+        ArrayList<Integer>l1=new ArrayList<>();
+        ArrayList<Integer>l2=new ArrayList<>();
+        inorder(r1,l1);
+        inorder(r2,l2);
+        return l1.equals(l2);
+        
+    }
+    
+    void inorder(Node r1,ArrayList<Integer>l)
+    {
+        if(r1==null)
+        {
+            return;
+        }
+        
+        inorder(r1.left,l);
+        l.add(r1.data);
+        inorder(r1.right,l);
+    }
+}

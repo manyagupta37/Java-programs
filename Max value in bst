@@ -1,0 +1,12 @@
+static int maxValue(node node){
+		// loop to find the rightmost node of BST
+		if(node==null)
+        {
+          return 0;
+        }
+      while(node.right!=null)
+      {
+        node=node.right;
+      }
+      return node.data;
+	}

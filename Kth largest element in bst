@@ -1,0 +1,27 @@
+class Solution {
+    int res=-1;
+    int count=0;
+    // return the Kth largest element in the given BST rooted at 'root'
+    public int kthLargest(Node root, int k) {
+        // Your code here
+        inorder(root,k);
+        return res;
+    }
+    public void inorder(Node root,int k)
+    {
+        if(root==null)
+        {
+            return;
+        }
+        
+        inorder(root.right,k);
+        count++;
+        if(count==k)
+        {
+            res=root.data;
+            return;
+        }
+        
+        inorder(root.left,k);
+    }
+}

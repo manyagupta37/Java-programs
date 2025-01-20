@@ -1,0 +1,58 @@
+class Solution {
+	/* This is the Node class definition
+	
+	class Node {
+		public Node left;
+		public Node right;
+		public int data;
+
+		public Node(int data) {
+			this.data = data;
+		}
+	}
+	*/
+
+	Node findPredecessor(Node root, Node p) {
+	    // add your logic here
+		if(root==null)
+		{
+			return null;
+		}
+		Node pred=null;
+		while(root!=null)
+		{
+			if(p.data<root.data)
+			{
+				root=root.left;
+			}
+			else if(p.data>root.data)
+			{
+				pred=root;
+				root=root.right;
+			}
+			else{
+				if(root.left!=null)
+				{
+					pred=get(root.left);
+				}
+				break;
+			}
+		}
+		return (root!=null) ? pred : null;
+	}
+	
+	Node get(Node root)
+	{
+		if(root==null)
+		{
+			return null;
+		}
+		
+		Node temp=root.left;
+		while(root.right!=null)
+		{
+			root=root.right;
+		}
+		return root;
+	}
+}

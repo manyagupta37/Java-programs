@@ -1,0 +1,24 @@
+class Solution {
+    public Node sortedArrayToBST(int[] nums) {
+        // Code here
+        return helper(nums,0,nums.length-1);
+        
+    }
+    public Node helper(int[]nums,int s,int e)
+    {
+        if(s>e)
+        {
+            return null;
+        }
+        
+        int m=s+(e-s)/2;
+        
+        Node root=new Node(nums[m]);
+        
+        root.left=helper(nums,s,m-1);
+        root.right=helper(nums,m+1,e);
+        
+        return root;
+    }
+    
+}

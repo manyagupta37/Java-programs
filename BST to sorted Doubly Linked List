@@ -1,0 +1,31 @@
+public class Solution 
+{
+    static TreeNode head;
+    public static TreeNode<Integer> bstToSortedDLL(TreeNode<Integer> root) {
+        // Write your code here.
+        head=null;
+        helper(root,null);
+        return head;
+    }
+    public static TreeNode<Integer> helper(TreeNode<Integer>root,TreeNode<Integer> prev)
+    {
+        if(root==null)
+        {
+            return prev;
+        }
+
+        prev=helper(root.left,prev);
+        if(prev!=null)
+        {
+            
+            prev.right=root;
+            root.left=prev;
+        }
+        else{
+            head=root;
+        }
+        prev=root;
+
+        return helper(root.right,prev);
+    }
+}

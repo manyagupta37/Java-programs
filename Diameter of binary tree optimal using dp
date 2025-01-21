@@ -1,0 +1,22 @@
+int diameter(Node root) {
+        // Your code here
+        int []res=new int[1];
+        res[0]=Integer.MIN_VALUE;
+        helper(root,res);
+        return res[0];
+    }
+    
+    int helper(Node root,int[] res)
+    {
+        if(root==null)
+        {
+            return 0;
+        }
+        
+        int ld=helper(root.left,res);
+        int rd=helper(root.right,res);
+        
+        res[0]=Math.max(res[0],ld+rd);
+        return Math.max(ld,rd)+1;
+    }
+}

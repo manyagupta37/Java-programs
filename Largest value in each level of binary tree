@@ -1,0 +1,46 @@
+class Solution
+{
+    public ArrayList<Integer> largestValues(Node root)
+    {
+        ArrayList<Integer>res=new ArrayList<>();
+        int level=levels(root);
+        for(int i=1;i<=level;i++)
+        {
+            res.add(nthLevel(root,i));
+        }
+        return res;
+        //code here
+    }
+    public int nthLevel(Node root,int n)
+    {
+        if(root==null)
+        {
+            return Integer.MIN_VALUE;
+        }
+        if(n==1)
+        {
+            return root.data;
+        }
+        
+        int lmax=nthLevel(root.left,n-1);
+        int rmax=nthLevel(root.right,n-1);
+        
+        return Math.max(lmax,rmax);
+    }
+    public int height(Node root)
+    {
+        if(root==null)
+        {
+            return -1;
+        }
+        
+        int lh=height(root.left);
+        int rh=height(root.right);
+        
+        return Math.max(lh,rh)+1;
+    }
+    public int levels(Node root)
+    {
+        return height(root)+1;
+    }
+}

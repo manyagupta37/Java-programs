@@ -1,0 +1,88 @@
+class MyHashMap {
+    LinkedList<Entry>[]map;
+    public static int size=769;
+
+    public MyHashMap() {
+        map=new LinkedList[size];
+    }
+    
+    public void put(int key, int value) {
+        int bucket=key%size;
+        if(map[bucket]==null)
+        {
+            map[bucket]=new LinkedList<Entry>();
+            map[bucket].add(new Entry(key, value));
+        }
+        else
+
+        {
+            for(Entry e:map[bucket])
+            {
+                if(e.key==key)
+                {
+                    e.value=value;
+                    return;
+                }
+            }
+            map[bucket].add(new Entry(key,value));
+        }
+    }
+    
+    public int get(int key) {
+        int bucket=key%size;
+        if(map[bucket]==null){
+            return -1;
+        }
+        for(Entry e:map[bucket])
+        {
+            if(e.key==key)
+            {
+                return e.value;
+            }
+        }
+        return -1;
+    }
+    
+    public void remove(int key) {
+        int  bucket=key%size;
+        Entry temp=null;
+        if(map[bucket]==null)
+        {
+            return;
+        }
+        else
+        {
+            for(Entry e:map[bucket])
+            {
+                if(e.key==key)
+                {
+                    temp=e;
+                }
+
+            }
+            if(temp==null)
+            {
+                return;
+            }
+            map[bucket].remove(temp);
+        }
+        
+    }
+}
+class Entry{
+    public int key;
+    public int value;
+    Entry(int key,int value)
+    {
+        this.key=key;
+        this.value=value;
+    }
+}
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * MyHashMap obj = new MyHashMap();
+ * obj.put(key,value);
+ * int param_2 = obj.get(key);
+ * obj.remove(key);
+ */

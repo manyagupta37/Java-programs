@@ -1,0 +1,69 @@
+class Solution
+{
+    static Trie root;
+    public static int wordBreak(String A, ArrayList<String> B )
+    {
+        //code here
+        root=new Trie();
+        for(String word:B)
+        {
+            insert(word);
+        }
+        if(A.length()==0)
+        {
+            return 1;
+        }
+        
+        for(int i=1;i<=A.length();i++)
+        {
+            String firstPart=A.substring(0,i);
+            String secondPart=A.substring(i);
+            
+            if(search(firstPart) && wordBreak(secondPart,B)==1)
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+    
+    public static void insert(String word)
+    {
+        Trie node=root;
+        for(int i=0;i<word.length();i++)
+        {
+            int index=word.charAt(i)-'a';
+            if(node.children[index]==null)
+            {
+                node.children[index]=new Trie();
+                
+            }
+            node=node.children[index];
+        }
+        node.eow=true;
+    }
+    
+    public static boolean search(String word)
+    {
+        Trie node=root;
+        for(int i=0;i<word.length();i++)
+        {
+            int index=word.charAt(i)-'a';
+            if(node.children[index]==null)
+            {
+                return false;
+            }
+            node=node.children[index];
+        }
+        return node.eow;
+    }
+}
+ class Trie{
+    Trie[]children;
+    boolean eow;
+    Trie()
+    {
+        children=new Trie[26];
+        eow=false;
+    }
+}

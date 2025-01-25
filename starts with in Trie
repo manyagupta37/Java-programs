@@ -1,0 +1,14 @@
+public boolean startsWith(String prefix) {
+        Trie root=this;
+        for(int i=0;i<prefix.length();i++)
+        {
+            int index=prefix.charAt(i)-'a';
+            if(root.children[index]==null)
+            {
+                return false;
+            }
+            root=root.children[index];
+        }
+        return true;
+
+    }

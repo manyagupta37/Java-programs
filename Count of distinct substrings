@@ -1,0 +1,33 @@
+class GfG
+{
+    static Node root;
+   public static int countDistinctSubstring(String st)
+   {
+       //your code here
+       root=new Node();
+       int total=0;
+       for(int i=0;i<st.length();i++)
+       {
+           Node curr=root;
+          for(int j=i;j<st.length();j++)
+          {
+              int idx=st.charAt(j)-'a';
+              if(curr.children[idx]==null)
+              {
+                  curr.children[idx]=new Node();
+                  total++;
+              }
+              curr=curr.children[idx];
+          }
+       }
+       return total+1;
+      
+
+   }
+   static class Node{
+       Node[]children;
+       Node(){
+           children=new Node[26];
+       }
+   }
+}

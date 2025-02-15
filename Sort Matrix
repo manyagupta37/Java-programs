@@ -1,0 +1,27 @@
+class Solution {
+    int[][] sortedMatrix(int N, int Mat[][]) {
+        // code here
+        for(int i=0;i<N;i++)
+        {
+            for(int j=0;j<N;j++)
+            {
+                for(int k=0;k<N;k++)
+                {
+                    for(int l=0;l<N;l++)
+                    {
+                        if(Mat[k][l]>Mat[i][j])
+                        {
+                            int temp=Mat[i][j];
+                            Mat[i][j]=Mat[k][l];
+                            Mat[k][l]=temp;
+                        }
+                    }
+                }
+            }
+            
+        }
+        return Mat;
+               
+           
+    }
+}

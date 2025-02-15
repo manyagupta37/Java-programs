@@ -1,0 +1,27 @@
+class Solution {
+    // Function to reverse words in a given string
+    public String reverseWords(String s) {
+        // Code here
+        String[]words=s.trim().split("\\s+");
+        for(int i=0;i<words.length;i++)
+        {
+            words[i]=reverse(words[i]);
+        }
+        return String.join(" ",words);
+    }
+    public String reverse(String s)
+    {
+        char[]arr=s.toCharArray();
+        int l=0;
+        int h=arr.length-1;
+        while(l<h)
+        {
+            char temp=arr[l];
+            arr[l]=arr[h];
+            arr[h]=temp;
+            l++;
+            h--;
+        }
+        return new String(arr);
+    }
+}

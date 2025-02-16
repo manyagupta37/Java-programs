@@ -1,0 +1,54 @@
+class Solution {
+    int[][] rotateMatrix(int M, int N, int Mat[][]) {
+        // code here
+        int rs=0;
+        int re=M-1;
+        int cs=0;
+        int ce=N-1;
+        
+        
+        while(rs<re && cs<ce)
+        {
+            int prev=Mat[rs+1][cs];
+            for(int i=cs;i<=ce;i++)
+            {
+                int curr=Mat[rs][i];
+                Mat[rs][i]=prev;
+                prev=curr;
+            }
+            rs++;
+            
+            
+            for(int j=rs;j<=re;j++)
+            {
+                int curr=Mat[j][ce];
+                Mat[j][ce]=prev;
+                prev=curr;
+            }
+            ce--;
+            
+            if(rs<=re){
+            for(int k=ce;k>=cs;k--)
+            {
+                int curr=Mat[re][k];
+                Mat[re][k]=prev;
+                prev=curr;
+            }
+            re--;
+            }
+            
+            
+            
+            if(cs<=ce){
+            for(int l=re;l>=rs;l--)
+            {
+                int curr=Mat[l][cs];
+                Mat[l][cs]=prev;
+                prev=curr;
+            }
+            cs++;
+        }
+        }
+        return Mat;
+    }
+}

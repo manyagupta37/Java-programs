@@ -1,0 +1,35 @@
+class Solution {
+    // Function to return list of integers that form the boundary
+    // traversal of the matrix in a clockwise manner.
+    static ArrayList<Integer> boundaryTraversal(int mat[][]) {
+        // code here
+        ArrayList<Integer> res=new ArrayList<>();
+        int rs=0;
+        int re=mat.length-1;
+        int cs=0;
+        int ce=mat[0].length-1;
+        for(int i=cs;i<=ce;i++)
+        {
+            res.add(mat[rs][i]);
+        }
+        rs++;
+        for(int j=rs;j<=re;j++)
+        {
+            res.add(mat[j][ce]);
+        }
+        ce--;
+        for(int k=ce;k>=cs;k--)
+        {
+            res.add(mat[re][k]);
+        }
+        re--;
+        
+        for(int l=re;l>=rs;l--)
+        {
+            res.add(mat[l][cs]);
+        }
+        cs++;
+        
+        return res;
+    }
+}

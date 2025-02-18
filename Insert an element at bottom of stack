@@ -1,0 +1,16 @@
+class Solution {
+    public Stack<Integer> insertAtBottom(Stack<Integer> st, int x) {
+        Stack<Integer>helper=new Stack<>();
+        while(!st.isEmpty())
+        {
+            helper.push(st.pop());
+        }
+        st.push(x);
+        while(!helper.isEmpty())
+        {
+            st.push(helper.pop());
+        }
+        
+        return st;
+    }
+}

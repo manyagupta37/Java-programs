@@ -1,0 +1,15 @@
+class Solution {
+    void clonestack(Stack<Integer> st, Stack<Integer> cloned) {
+        // code here
+        Stack<Integer>helper=new Stack<>();
+        while(!st.isEmpty())
+        {
+            helper.push(st.pop());
+        }
+        while(!helper.isEmpty())
+        {
+            
+            cloned.push(helper.pop());
+        }
+    }
+}

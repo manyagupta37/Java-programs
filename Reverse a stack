@@ -1,0 +1,28 @@
+
+class Solution
+{ 
+    static void reverse(Stack<Integer> s)
+    {
+        // add your code here
+        if(s.size()==0)
+        {
+            return;
+        }
+        int top=s.pop();
+        
+        reverse(s);
+        pushatbottom(s,top);
+    }
+    static void pushatbottom(Stack<Integer> s,int elem)
+    {
+        Stack<Integer> helper=new Stack();
+        while(!s.isEmpty())
+        {
+            helper.push(s.pop());
+        }
+        s.push(elem);
+        while(!helper.isEmpty())
+        {
+            s.push(helper.pop());
+        }
+    }

@@ -1,0 +1,13 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        String concat=s+s;
+        if(s.length()==goal.length())
+        {
+            if(concat.contains(goal))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}

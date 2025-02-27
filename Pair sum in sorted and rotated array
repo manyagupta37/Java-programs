@@ -1,0 +1,32 @@
+class Solution {
+    static boolean pairInSortedRotated(int arr[], int target) {
+        // Your code here
+        int i;
+        for(i=0;i<arr.length-1;i++)
+        {
+            if(arr[i]>arr[i+1])
+            {
+                break;
+            }
+        }
+        int n=arr.length;
+        int s=(i+1)%n;
+        int e=i;
+        while(s!=e)
+        {
+            if(arr[s]+arr[e]==target)
+            {
+                return true;
+            }
+            if(arr[s]+arr[e]<target)
+            {
+                s=(s+1)%n;
+            }
+            else
+            {
+               e=(n+e-1)%n;
+            }
+        }
+        return false;
+    }
+}

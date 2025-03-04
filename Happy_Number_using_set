@@ -1,0 +1,37 @@
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer>s=new HashSet<>();
+
+        
+        while(n!=1 && !s.contains(n))
+        {
+            s.add(n);
+            n=square(n);
+
+        }
+        return n==1;
+    }
+    public ArrayList<Integer> getDigits(int n)
+    {
+        ArrayList<Integer> list=new ArrayList<>();
+        
+        while(n>0)
+        {
+            int rem=n%10;
+            list.add(rem);
+            n=n/10;
+            
+        }
+        return list;
+    }
+    public int square(int n)
+    {
+        int sum=0;
+        ArrayList<Integer>list=getDigits(n);
+        for(int i=0;i<list.size();i++)
+        {
+            sum+=list.get(i)*list.get(i);
+        }
+        return sum;
+    }
+}

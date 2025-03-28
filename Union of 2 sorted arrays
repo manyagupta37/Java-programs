@@ -1,0 +1,32 @@
+import java.util.*;
+public class Solution {
+    public static List< Integer > sortedArray(int []a, int []b) {
+        // Write your code here
+        Set<Integer>set=new LinkedHashSet<>();
+        int i=0;int j=0;
+        while(i<a.length && j<b.length)
+        {
+            if(a[i]<=b[j])
+            {
+                set.add(a[i]);
+                i++;
+            }
+            else
+            {
+                set.add(b[j]);
+                j++;
+            }
+        }
+        while(i<a.length){
+            set.add(a[i]);
+            i++;
+        }
+        while(j<b.length)
+        {
+            set.add(b[j]);
+            j++;
+        }
+
+        return new ArrayList<>(set);
+    }
+}

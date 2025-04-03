@@ -1,0 +1,40 @@
+class Solution {
+    public String decodeString(String s) {
+        Stack<Integer>countSt=new Stack<>();
+        Stack<String>stringst=new Stack<>();
+
+        int count=0;
+        String curr="";
+
+        for(char c:s.toCharArray())
+        {
+            if(Character.isDigit(c))
+            {
+                count = count * 10 + (c-'0');
+            }
+            else if(c=='[')
+            {
+                countSt.push(count);
+                stringst.push(curr);
+                count=0;
+                curr="";
+            }
+            else if(c==']')
+            {
+                StringBuilder decoded=new StringBuilder(stringst.pop());
+                int repeat=countSt.pop();
+                for(int i=0;i<repeat;i++)
+                {
+                    decoded.append(curr);
+                }
+                curr=decoded.toString();
+            }
+            else
+            {
+                curr+=c;
+            }
+
+        }
+        return curr;
+    }
+}
